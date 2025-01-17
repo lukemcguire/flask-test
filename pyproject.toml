@@ -17,6 +17,10 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+dependencies = [
+    "flask>=3.1.0",
+    "python-dotenv>=1.0.1",
+]
 
 [project.urls]
 Homepage = "https://lukemcguire.github.io/flask-test/"

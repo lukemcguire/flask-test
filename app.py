@@ -1,8 +1,18 @@
+import os
+
+from dotenv import load_dotenv
 from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/add/<int:num1>/<int:num2>')
+
+@app.route("/")
+def hello():
+    """Returns a simple greeting."""
+    return "hello world"
+
+
+@app.route("/add/<num1>/<num2>")
 def add(num1: int, num2: int) -> str:
     """Adds two numbers together.
 
@@ -13,7 +23,8 @@ def add(num1: int, num2: int) -> str:
     Returns:
         The sum of the two numbers as a string.
     """
-    return str(num1 + num2)
+    return str(int(num1) + int(num2))
+
 
 def fibonacci(n: int) -> int | str:
     """Calculates the nth Fibonacci number.
@@ -36,7 +47,8 @@ def fibonacci(n: int) -> int | str:
             a, b = b, a + b
         return b
 
-@app.route('/fibonacci/<int:n>')
+
+@app.route("/fibonacci/<int:n>")
 def get_fibonacci(n: int) -> str:
     """Gets the nth Fibonacci number via the fibonacci function.
 
@@ -48,5 +60,7 @@ def get_fibonacci(n: int) -> str:
     """
     return str(fibonacci(n))
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+if __name__ == "__main__":
+    load_dotenv()
+    app.run(debug=os.getenv("ENV") == "dev")
