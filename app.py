@@ -22,3 +22,6 @@ def fibonacci(n):
 @app.route('/fibonacci/<int:n>')
 def get_fibonacci(n):
     return str(fibonacci(n))
+
+if __name__ == '__main__':
+    app.run(debug=True)
